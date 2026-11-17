@@ -224,6 +224,43 @@ audio{width:100%;max-width:560px;color-scheme:dark;filter:drop-shadow(0 4px 10px
 .bars span:nth-child(4){animation-delay:.36s}.bars span:nth-child(5){animation-delay:.48s}
 @keyframes bar{to{transform:scaleY(1)}}
 
+/* Scoped Deep Black Teal Custom Audio Player (#s-play only) */
+#s-play{display:flex;flex-direction:column;align-items:center;width:100%;max-width:580px;margin:0 auto;box-sizing:border-box}
+#s-play #audioPlayer,#s-play audio{display:none!important}
+#s-play .name{font-size:.92rem;font-weight:600;color:var(--hl)!important;margin-bottom:.75rem!important;letter-spacing:.02em;text-shadow:0 0 12px rgba(0,245,212,.25);word-break:break-word;max-width:100%}
+#s-play .waveform-wrap{width:100%;height:84px;position:relative;margin-bottom:.85rem;border-radius:14px;background:rgba(2,20,21,.5);border:1px solid rgba(46,230,214,.14);box-shadow:inset 0 2px 10px rgba(0,0,0,.45);overflow:hidden}
+#s-play .waveform-canvas{width:100%;height:100%;display:block}
+#s-play .player-bar{width:100%;display:flex;align-items:center;gap:.65rem;padding:.6rem .95rem;background:rgba(3,24,25,.85);border:1px solid rgba(46,230,214,.22);border-radius:999px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(0,0,0,.45),inset 0 1px 0 rgba(228,243,243,.12);box-sizing:border-box}
+#s-play .ctrl-btn{background:transparent;border:none;outline:none;cursor:pointer;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;color:var(--text2);transition:color .2s ease,transform .15s ease,filter .2s ease;user-select:none;-webkit-tap-highlight-color:transparent}
+#s-play .ctrl-btn:hover{color:#00f5d4;filter:drop-shadow(0 0 6px rgba(0,245,212,.55))}
+#s-play .ctrl-btn:active{transform:scale(.92)}
+#s-play .play-btn{width:36px;height:36px;min-width:36px;border-radius:50%;background:linear-gradient(135deg,#00f5d4,#14b8a6);color:#021a1b!important;box-shadow:0 0 16px rgba(0,245,212,.4),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .15s ease,box-shadow .2s ease}
+#s-play .play-btn:hover{transform:scale(1.06);box-shadow:0 0 22px rgba(0,245,212,.65),inset 0 1px 0 rgba(255,255,255,.5);filter:none}
+#s-play .play-btn:active{transform:scale(.94)}
+#s-play .play-btn svg.icon-play{margin-left:2px}
+#s-play .play-btn.playing svg.icon-play{display:none}
+#s-play .play-btn.playing svg.icon-pause{display:block;margin-left:0}
+#s-play .skip-btn{width:26px;height:26px;min-width:26px}
+#s-play .progress-wrap{flex:1;position:relative;height:24px;display:flex;align-items:center;cursor:pointer;user-select:none;touch-action:none;outline:none}
+#s-play .progress-wrap:focus-visible .progress-bar{box-shadow:0 0 0 2px #00f5d4}
+#s-play .progress-bar{width:100%;height:5px;background:rgba(255,255,255,.12);border-radius:3px;position:relative;pointer-events:none}
+#s-play .progress-fill{position:absolute;left:0;top:0;height:100%;width:0%;background:linear-gradient(90deg,#14b8a6,#00f5d4);border-radius:3px;box-shadow:0 0 8px rgba(0,245,212,.5)}
+#s-play .progress-thumb{position:absolute;top:50%;left:0%;width:12px;height:12px;border-radius:50%;background:#ffffff;border:2px solid #00f5d4;box-shadow:0 0 10px rgba(0,245,212,.8);transform:translate(-50%,-50%) scale(.8);transition:transform .15s ease;pointer-events:none}
+#s-play .progress-wrap:hover .progress-thumb,#s-play .progress-wrap.dragging .progress-thumb{transform:translate(-50%,-50%) scale(1.2)}
+#s-play .preview-marker{position:absolute;top:0;bottom:0;left:0%;width:2px;background:rgba(255,255,255,.65);opacity:0;pointer-events:none;transition:opacity .15s ease}
+#s-play .preview-tooltip{position:absolute;bottom:26px;left:0%;transform:translateX(-50%);padding:2px 6px;background:rgba(3,24,25,.95);border:1px solid rgba(46,230,214,.4);border-radius:5px;font-size:.72rem;font-variant-numeric:tabular-nums;color:#00f5d4;opacity:0;pointer-events:none;transition:opacity .15s ease;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+#s-play .time-display{font-size:.74rem;font-variant-numeric:tabular-nums;color:var(--text2);white-space:nowrap;user-select:none;min-width:64px;text-align:center}
+#s-play .time-cur{color:var(--text);font-weight:600}
+#s-play .dload-btn{width:26px;height:26px;min-width:26px}
+#s-play .vol-control{position:relative;display:flex;align-items:center}
+#s-play .vol-btn{width:26px;height:26px;min-width:26px}
+#s-play .vol-pill{width:0;opacity:0;visibility:hidden;pointer-events:none;overflow:hidden;display:flex;align-items:center;position:relative;height:24px;margin-left:0;transition:width .25s var(--ease),opacity .2s ease,visibility .2s ease,margin-left .25s var(--ease)}
+#s-play .vol-control.expanded .vol-pill{width:64px;margin-left:4px;opacity:1;visibility:visible;pointer-events:auto}
+#s-play .vol-slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:rgba(255,255,255,.14);border-radius:2px;outline:none;margin:0;cursor:pointer}
+#s-play .vol-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:10px;height:10px;border-radius:50%;background:#00f5d4;box-shadow:0 0 6px rgba(0,245,212,.8);cursor:pointer;border:none}
+#s-play .vol-slider::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:#00f5d4;box-shadow:0 0 6px rgba(0,245,212,.8);cursor:pointer;border:none}
+@media (max-width:480px){#s-play .player-bar{gap:.45rem;padding:.5rem .7rem}#s-play .time-display{font-size:.68rem;min-width:52px}#s-play .vol-control.expanded .vol-pill{width:48px}}
+
 /* 3D How It Works Steps */
 .how{margin-top:clamp(4.5rem,10vw,7.5rem);transform-style:preserve-3d}
 .how h2{font-size:clamp(1.8rem,5vw,2.75rem);margin-bottom:2.2rem}
@@ -360,7 +397,76 @@ audio{width:100%;max-width:560px;color-scheme:dark;filter:drop-shadow(0 4px 10px
         <p>Feature coming soon!</p>
         <label class="btn sm">Preview the visuals with your own audio<input id="file" type="file" accept="audio/*"></label>
       </div>
-      <div class="state" id="s-play"><p class="name" id="fname"></p><audio id="audio" controls></audio></div>
+      <div class="state" id="s-play">
+        <p class="name" id="fname"></p>
+        <div class="waveform-wrap">
+          <canvas class="waveform-canvas" aria-label="Audio Waveform Visualizer"></canvas>
+        </div>
+        <div class="player-bar" role="region" aria-label="Audio playback controls">
+          <button type="button" class="ctrl-btn play-btn" id="playBtn" aria-label="Play">
+            <svg class="icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none">
+              <rect x="5" y="4" width="4" height="16" rx="1"></rect>
+              <rect x="15" y="4" width="4" height="16" rx="1"></rect>
+            </svg>
+          </button>
+          <button type="button" class="ctrl-btn skip-btn" id="skipBackBtn" aria-label="Rewind 10 seconds">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 4v6h6"></path>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              <text x="12" y="15.5" font-size="7" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">10</text>
+            </svg>
+          </button>
+          <button type="button" class="ctrl-btn skip-btn" id="skipFwdBtn" aria-label="Forward 10 seconds">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 4v6h-6"></path>
+              <path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"></path>
+              <text x="12" y="15.5" font-size="7" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none">10</text>
+            </svg>
+          </button>
+          <div class="progress-wrap" id="progressWrap" role="slider" aria-label="Seek track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+              <div class="progress-thumb" id="progressThumb"></div>
+              <div class="preview-marker" id="previewMarker"></div>
+            </div>
+            <div class="preview-tooltip" id="previewTooltip">0:00</div>
+          </div>
+          <div class="time-display" id="timeDisplay" aria-live="off">
+            <span class="time-cur" id="timeCur">0:00</span> / <span class="time-dur" id="timeDur">0:00</span>
+          </div>
+          <button type="button" class="ctrl-btn dload-btn" id="downloadBtn" aria-label="Download Episode MP3">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
+          <div class="vol-control" id="volControl">
+            <button type="button" class="ctrl-btn vol-btn" id="volBtn" aria-label="Toggle volume slider" aria-expanded="false">
+              <svg class="vol-icon vol-high" id="volIconHigh" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <svg class="vol-icon vol-low" id="volIconLow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <svg class="vol-icon vol-muted" id="volIconMuted" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
+            <div class="vol-pill" id="volPill">
+              <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.01" value="1" aria-label="Volume level">
+            </div>
+          </div>
+        </div>
+        <audio id="audioPlayer"></audio>
+      </div>
     </div>
   </section>
   <section class="how" aria-labelledby="how">
@@ -853,7 +959,7 @@ setInterval(()=>{
 },530);
 
 /* ---------- Player UI Logic (Live Webhook & Memory-Safe Audio) ---------- */
-const btn=$('go'),audioPlayer=$('audio'),audio=audioPlayer,ids=['s-idle','s-load','s-done','s-play'];
+const btn=$('go'),audioPlayer=$('audioPlayer')||$('audio'),audio=audioPlayer,ids=['s-idle','s-load','s-done','s-play'];
 const show=id=>ids.forEach(s=>$(s).classList.toggle('on',s===id));
 let currentAudioUrl=null;
 
@@ -908,6 +1014,12 @@ $('form').addEventListener('submit',async e=>{
     const fnameEl=$('fname');
     if(fnameEl)fnameEl.textContent=`Episode: ${topic}`;
     show('s-play');
+    initCustomAudioPlayer();
+    initWaveformVisualizer();
+    resizeWaveformCanvas();
+    ensureVisualizerLoop();
+    updateProgressTrack();
+    updatePlayPauseIcons();
     audioPlayer.play().catch(()=>{});
   }catch(err){
     console.error('Podcast generation error:',err);
@@ -929,19 +1041,489 @@ $('file').addEventListener('change',e=>{
   audioPlayer.load();
   $('fname').textContent=f.name;
   show('s-play');
+  initCustomAudioPlayer();
+  initWaveformVisualizer();
+  resizeWaveformCanvas();
+  ensureVisualizerLoop();
+  updateProgressTrack();
+  updatePlayPauseIcons();
+  audioPlayer.play().catch(()=>{});
 });
 
-/* ---------- Real Audio Analysis (Dynamic Frequency Calculation) ---------- */
+/* ---------- Real Audio Analysis (Dynamic Frequency Calculation & Graph Reuse) ---------- */
 let actx,analyser,fb,playing=false;
+let mediaSourceNode=null;
 function setupAudio(){
-  if(actx)return;
+  if(actx && analyser && mediaSourceNode)return;
   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
-  actx=new AC();analyser=actx.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.82;
-  actx.createMediaElementSource(audio).connect(analyser);analyser.connect(actx.destination);
-  fb=new Uint8Array(analyser.frequencyBinCount);
+  if(!actx)actx=new AC();
+  if(!analyser){
+    analyser=actx.createAnalyser();
+    analyser.fftSize=512;
+    analyser.smoothingTimeConstant=.82;
+  }
+  if(!mediaSourceNode&&audioPlayer){
+    try{
+      mediaSourceNode=actx.createMediaElementSource(audioPlayer);
+      mediaSourceNode.connect(analyser);
+      analyser.connect(actx.destination);
+    }catch(e){
+      console.warn("MediaElementAudioSourceNode init:",e);
+    }
+  }
+  if(!fb&&analyser){
+    fb=new Uint8Array(analyser.frequencyBinCount);
+  }
 }
-audio.addEventListener('play',()=>{setupAudio();if(actx&&actx.state==='suspended')actx.resume();playing=true});
-['pause','ended'].forEach(ev=>audio.addEventListener(ev,()=>{playing=false}));
+audioPlayer.addEventListener('play',()=>{setupAudio();if(actx&&actx.state==='suspended')actx.resume();playing=true});
+['pause','ended'].forEach(ev=>audioPlayer.addEventListener(ev,()=>{playing=false}));
+
+/* ---------- Custom Deep Black Teal Audio Player Controls ---------- */
+const playBtn=$('playBtn'),
+  skipBackBtn=$('skipBackBtn'),
+  skipFwdBtn=$('skipFwdBtn'),
+  downloadBtn=$('downloadBtn'),
+  progressWrap=$('progressWrap'),
+  progressFill=$('progressFill'),
+  progressThumb=$('progressThumb'),
+  previewMarker=$('previewMarker'),
+  previewTooltip=$('previewTooltip'),
+  timeCur=$('timeCur'),
+  timeDur=$('timeDur'),
+  volControl=$('volControl'),
+  volBtn=$('volBtn'),
+  volSlider=$('volSlider'),
+  volIconHigh=$('volIconHigh'),
+  volIconLow=$('volIconLow'),
+  volIconMuted=$('volIconMuted'),
+  waveformCanvas=document.querySelector('#s-play .waveform-canvas');
+
+let isDraggingSeek=false;
+let dragSeekFraction=0;
+let isPlayerControlsBound=false;
+
+function formatAudioTime(sec){
+  if(!isFinite(sec)||isNaN(sec)||sec<0)return'0:00';
+  const m=Math.floor(sec/60);
+  const s=Math.floor(sec%60);
+  return`${m}:${s<10?'0':''}${s}`;
+}
+
+function updatePlayPauseIcons(){
+  if(!playBtn)return;
+  const isPlaying=!audioPlayer.paused&&!audioPlayer.ended;
+  const playIcon=playBtn.querySelector('.icon-play');
+  const pauseIcon=playBtn.querySelector('.icon-pause');
+  if(playIcon&&pauseIcon){
+    playIcon.style.display=isPlaying?'none':'block';
+    pauseIcon.style.display=isPlaying?'block':'none';
+  }
+  playBtn.classList.toggle('playing',isPlaying);
+  playBtn.setAttribute('aria-label',isPlaying?'Pause':'Play');
+}
+
+function updateVolumeIcon(vol,muted){
+  if(!volIconHigh||!volIconLow||!volIconMuted)return;
+  if(muted||vol===0){
+    volIconHigh.style.display='none';
+    volIconLow.style.display='none';
+    volIconMuted.style.display='block';
+  }else if(vol<0.5){
+    volIconHigh.style.display='none';
+    volIconLow.style.display='block';
+    volIconMuted.style.display='none';
+  }else{
+    volIconHigh.style.display='block';
+    volIconLow.style.display='none';
+    volIconMuted.style.display='none';
+  }
+}
+
+function updateProgressTrack(){
+  if(!progressFill||!progressThumb)return;
+  const cur=audioPlayer.currentTime||0;
+  const dur=audioPlayer.duration;
+  if(!isFinite(dur)||dur<=0){
+    progressFill.style.width='0%';
+    progressThumb.style.left='0%';
+    if(timeCur)timeCur.textContent='0:00';
+    if(timeDur)timeDur.textContent='0:00';
+    if(progressWrap)progressWrap.setAttribute('aria-valuenow','0');
+    return;
+  }
+  const pct=Math.min(100,Math.max(0,(cur/dur)*100));
+  progressFill.style.width=`${pct}%`;
+  progressThumb.style.left=`${pct}%`;
+  if(timeCur)timeCur.textContent=formatAudioTime(cur);
+  if(timeDur)timeDur.textContent=formatAudioTime(dur);
+  if(progressWrap)progressWrap.setAttribute('aria-valuenow',Math.round(pct).toString());
+}
+
+function bindCustomPlayerControls(){
+  if(isPlayerControlsBound)return;
+  isPlayerControlsBound=true;
+
+  if(playBtn){
+    playBtn.addEventListener('click',()=>{
+      setupAudio();
+      if(actx&&actx.state==='suspended')actx.resume();
+      if(audioPlayer.paused){
+        audioPlayer.play().catch(()=>{});
+      }else{
+        audioPlayer.pause();
+      }
+    });
+  }
+
+  if(skipBackBtn){
+    skipBackBtn.addEventListener('click',()=>{
+      audioPlayer.currentTime=Math.max(0,(audioPlayer.currentTime||0)-10);
+      if(!isDraggingSeek)updateProgressTrack();
+    });
+  }
+
+  if(skipFwdBtn){
+    skipFwdBtn.addEventListener('click',()=>{
+      const dur=isFinite(audioPlayer.duration)?audioPlayer.duration:Infinity;
+      audioPlayer.currentTime=Math.min(dur,(audioPlayer.currentTime||0)+10);
+      if(!isDraggingSeek)updateProgressTrack();
+    });
+  }
+
+  if(progressWrap){
+    const getFractionFromEvent=(e)=>{
+      const rect=progressWrap.getBoundingClientRect();
+      if(rect.width<=0)return 0;
+      return Math.min(1,Math.max(0,(e.clientX-rect.left)/rect.width));
+    };
+
+    progressWrap.addEventListener('pointermove',(e)=>{
+      if(isDraggingSeek){
+        dragSeekFraction=getFractionFromEvent(e);
+        const pct=dragSeekFraction*100;
+        progressFill.style.width=`${pct}%`;
+        progressThumb.style.left=`${pct}%`;
+        if(previewTooltip){
+          const dur=isFinite(audioPlayer.duration)?audioPlayer.duration:0;
+          previewTooltip.textContent=formatAudioTime(dragSeekFraction*dur);
+          previewTooltip.style.left=`${pct}%`;
+          previewTooltip.style.opacity='1';
+        }
+        return;
+      }
+      const f=getFractionFromEvent(e);
+      const pct=f*100;
+      if(previewMarker){
+        previewMarker.style.left=`${pct}%`;
+        previewMarker.style.opacity='1';
+      }
+      if(previewTooltip){
+        const dur=isFinite(audioPlayer.duration)?audioPlayer.duration:0;
+        previewTooltip.textContent=formatAudioTime(f*dur);
+        previewTooltip.style.left=`${pct}%`;
+        previewTooltip.style.opacity='1';
+      }
+    });
+
+    progressWrap.addEventListener('pointerleave',()=>{
+      if(!isDraggingSeek){
+        if(previewMarker)previewMarker.style.opacity='0';
+        if(previewTooltip)previewTooltip.style.opacity='0';
+      }
+    });
+
+    progressWrap.addEventListener('pointerdown',(e)=>{
+      try{progressWrap.setPointerCapture(e.pointerId);}catch(_){}
+      isDraggingSeek=true;
+      progressWrap.classList.add('dragging');
+      dragSeekFraction=getFractionFromEvent(e);
+      const pct=dragSeekFraction*100;
+      progressFill.style.width=`${pct}%`;
+      progressThumb.style.left=`${pct}%`;
+      if(previewTooltip){
+        const dur=isFinite(audioPlayer.duration)?audioPlayer.duration:0;
+        previewTooltip.textContent=formatAudioTime(dragSeekFraction*dur);
+        previewTooltip.style.left=`${pct}%`;
+        previewTooltip.style.opacity='1';
+      }
+    });
+
+    progressWrap.addEventListener('pointerup',(e)=>{
+      if(!isDraggingSeek)return;
+      try{progressWrap.releasePointerCapture(e.pointerId);}catch(_){}
+      isDraggingSeek=false;
+      progressWrap.classList.remove('dragging');
+      if(previewTooltip)previewTooltip.style.opacity='0';
+      if(previewMarker)previewMarker.style.opacity='0';
+      if(isFinite(audioPlayer.duration)&&audioPlayer.duration>0){
+        audioPlayer.currentTime=dragSeekFraction*audioPlayer.duration;
+      }
+      updateProgressTrack();
+    });
+
+    progressWrap.addEventListener('pointercancel',(e)=>{
+      if(!isDraggingSeek)return;
+      try{progressWrap.releasePointerCapture(e.pointerId);}catch(_){}
+      isDraggingSeek=false;
+      progressWrap.classList.remove('dragging');
+      if(previewTooltip)previewTooltip.style.opacity='0';
+      if(previewMarker)previewMarker.style.opacity='0';
+      updateProgressTrack();
+    });
+
+    progressWrap.addEventListener('keydown',(e)=>{
+      if(e.key==='ArrowLeft'){
+        audioPlayer.currentTime=Math.max(0,(audioPlayer.currentTime||0)-5);
+        updateProgressTrack();
+        e.preventDefault();
+      }else if(e.key==='ArrowRight'){
+        const dur=isFinite(audioPlayer.duration)?audioPlayer.duration:Infinity;
+        audioPlayer.currentTime=Math.min(dur,(audioPlayer.currentTime||0)+5);
+        updateProgressTrack();
+        e.preventDefault();
+      }
+    });
+  }
+
+  if(downloadBtn){
+    downloadBtn.addEventListener('click',()=>{
+      const src=currentAudioUrl||audioPlayer.src;
+      if(!src)return;
+      const fnameEl=$('fname');
+      const rawTitle=(fnameEl&&fnameEl.textContent)?fnameEl.textContent.replace(/^Episode:\s*|^Generated:\s*/i,''):'podcast_episode';
+      const cleanName=rawTitle.replace(/[^a-zA-Z0-9_\-\s]/g,'').trim().replace(/\s+/g,'_')||'podcast_episode';
+      const a=document.createElement('a');
+      a.href=src;
+      a.download=`${cleanName}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+
+  if(volBtn&&volControl){
+    volBtn.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      const expanded=volControl.classList.toggle('expanded');
+      volBtn.setAttribute('aria-expanded',expanded?'true':'false');
+    });
+  }
+
+  if(volSlider){
+    volSlider.addEventListener('input',()=>{
+      const val=parseFloat(volSlider.value);
+      audioPlayer.volume=val;
+      audioPlayer.muted=(val===0);
+      updateVolumeIcon(val,audioPlayer.muted);
+    });
+  }
+
+  audioPlayer.addEventListener('play',()=>{
+    updatePlayPauseIcons();
+    ensureVisualizerLoop();
+  });
+  audioPlayer.addEventListener('pause',()=>{
+    updatePlayPauseIcons();
+  });
+  audioPlayer.addEventListener('ended',()=>{
+    updatePlayPauseIcons();
+    updateProgressTrack();
+  });
+  audioPlayer.addEventListener('timeupdate',()=>{
+    if(!isDraggingSeek)updateProgressTrack();
+  });
+  audioPlayer.addEventListener('loadedmetadata',()=>{
+    updateProgressTrack();
+  });
+  audioPlayer.addEventListener('durationchange',()=>{
+    updateProgressTrack();
+  });
+  audioPlayer.addEventListener('volumechange',()=>{
+    if(volSlider)volSlider.value=audioPlayer.muted?0:audioPlayer.volume;
+    updateVolumeIcon(audioPlayer.volume,audioPlayer.muted);
+  });
+  audioPlayer.addEventListener('error',()=>{
+    updatePlayPauseIcons();
+    console.warn("Audio playback error");
+  });
+}
+
+function initCustomAudioPlayer(){
+  bindCustomPlayerControls();
+  updateProgressTrack();
+  updatePlayPauseIcons();
+  if(volSlider)volSlider.value=audioPlayer.volume;
+  updateVolumeIcon(audioPlayer.volume,audioPlayer.muted);
+}
+
+/* ---------- Multi-Strand Ribbon Waveform Visualizer ---------- */
+const RIBBONS=[
+  {baseAmp:22,freq:2.2,speed:1.1,phase:0.0,band:'bass',yOff:-5,color:'#00f5d4',glow:'rgba(0,245,212,0.6)',lw:2.0},
+  {baseAmp:18,freq:3.1,speed:-0.9,phase:1.5,band:'mid',yOff:4,color:'#00bbf9',glow:'rgba(0,187,249,0.5)',lw:1.8},
+  {baseAmp:25,freq:1.8,speed:0.8,phase:2.8,band:'bassMid',yOff:-2,color:'#2ec4b6',glow:'rgba(46,196,182,0.6)',lw:2.2},
+  {baseAmp:15,freq:4.0,speed:-1.3,phase:4.1,band:'treb',yOff:6,color:'#72efdd',glow:'rgba(114,239,221,0.5)',lw:1.6},
+  {baseAmp:20,freq:2.6,speed:1.4,phase:5.2,band:'mid',yOff:-4,color:'#38ef7d',glow:'rgba(56,239,125,0.5)',lw:1.9},
+  {baseAmp:13,freq:3.6,speed:-0.7,phase:0.9,band:'trebMid',yOff:2,color:'#20c997',glow:'rgba(32,201,151,0.5)',lw:1.5}
+];
+
+let vCtx=null;
+let visualizerRafId=null;
+let visualizerStartTime=performance.now();
+let smoothEnergy={bass:0,mid:0,treb:0,bassMid:0,trebMid:0};
+let waveformFreqData=null;
+let canvasCssWidth=0,canvasCssHeight=0;
+let isVisualizerBound=false;
+
+function resizeWaveformCanvas(){
+  if(!waveformCanvas)return;
+  const rect=waveformCanvas.getBoundingClientRect();
+  if(rect.width<=0||rect.height<=0)return;
+  const dpr=window.devicePixelRatio||1;
+  const pixelW=Math.round(rect.width*dpr);
+  const pixelH=Math.round(rect.height*dpr);
+  if(waveformCanvas.width!==pixelW||waveformCanvas.height!==pixelH){
+    waveformCanvas.width=pixelW;
+    waveformCanvas.height=pixelH;
+  }
+  canvasCssWidth=rect.width;
+  canvasCssHeight=rect.height;
+}
+
+function initWaveformVisualizer(){
+  if(isVisualizerBound||!waveformCanvas)return;
+  isVisualizerBound=true;
+  vCtx=waveformCanvas.getContext('2d');
+  resizeWaveformCanvas();
+
+  if(window.ResizeObserver){
+    const ro=new ResizeObserver(()=>{
+      resizeWaveformCanvas();
+    });
+    ro.observe(waveformCanvas);
+  }else{
+    window.addEventListener('resize',resizeWaveformCanvas,{passive:true});
+  }
+
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden){
+      resizeWaveformCanvas();
+      ensureVisualizerLoop();
+    }
+  });
+
+  ensureVisualizerLoop();
+}
+
+function ensureVisualizerLoop(){
+  if(visualizerRafId===null){
+    visualizerRafId=requestAnimationFrame(renderRibbonFrame);
+  }
+}
+
+function renderRibbonFrame(now){
+  visualizerRafId=null;
+
+  const sPlay=$('s-play');
+  const isSPlayVisible=sPlay&&sPlay.classList.contains('on');
+
+  if(document.hidden||!isSPlayVisible||canvasCssWidth<=0||canvasCssHeight<=0){
+    return;
+  }
+
+  const t=(now-visualizerStartTime)*0.001;
+  const isAudioPlaying=!audioPlayer.paused&&!audioPlayer.ended&&audioPlayer.currentTime>0;
+
+  let rawBass=0,rawMid=0,rawTreb=0;
+  if(isAudioPlaying&&analyser){
+    if(!waveformFreqData||waveformFreqData.length!==analyser.frequencyBinCount){
+      waveformFreqData=new Uint8Array(analyser.frequencyBinCount);
+    }
+    analyser.getByteFrequencyData(waveformFreqData);
+
+    let bSum=0;
+    for(let i=2;i<=10;i++)bSum+=waveformFreqData[i]||0;
+    rawBass=(bSum/9)/255;
+
+    let mSum=0;
+    for(let i=11;i<=45;i++)mSum+=waveformFreqData[i]||0;
+    rawMid=(mSum/35)/255;
+
+    let trSum=0;
+    for(let i=46;i<=130;i++)trSum+=waveformFreqData[i]||0;
+    rawTreb=(trSum/85)/255;
+  }
+
+  const targetBass=isAudioPlaying?rawBass:0;
+  const targetMid=isAudioPlaying?rawMid:0;
+  const targetTreb=isAudioPlaying?rawTreb:0;
+
+  smoothEnergy.bass+=(targetBass-smoothEnergy.bass)*0.18;
+  smoothEnergy.mid+=(targetMid-smoothEnergy.mid)*0.22;
+  smoothEnergy.treb+=(targetTreb-smoothEnergy.treb)*0.25;
+  smoothEnergy.bassMid=smoothEnergy.bass*0.6+smoothEnergy.mid*0.4;
+  smoothEnergy.trebMid=smoothEnergy.treb*0.7+smoothEnergy.mid*0.3;
+
+  const dpr=window.devicePixelRatio||1;
+  vCtx.save();
+  vCtx.scale(dpr,dpr);
+  vCtx.clearRect(0,0,canvasCssWidth,canvasCssHeight);
+
+  const cy=canvasCssHeight*0.5;
+  const numPoints=90;
+
+  RIBBONS.forEach((r)=>{
+    const energy=smoothEnergy[r.band]||0;
+
+    let amp;
+    if(isAudioPlaying){
+      amp=r.baseAmp*(0.35+energy*1.45);
+    }else{
+      amp=r.baseAmp*(0.26+0.08*Math.sin(t*0.85+r.phase));
+    }
+
+    const grad=vCtx.createLinearGradient(0,0,canvasCssWidth,0);
+    grad.addColorStop(0,'rgba(0, 245, 212, 0.08)');
+    grad.addColorStop(0.3,r.color);
+    grad.addColorStop(0.7,r.glow);
+    grad.addColorStop(1,'rgba(0, 187, 249, 0.08)');
+
+    vCtx.beginPath();
+    vCtx.strokeStyle=grad;
+    vCtx.lineWidth=r.lw;
+    vCtx.shadowColor=r.glow;
+    vCtx.shadowBlur=isAudioPlaying?(4+energy*8):4;
+    vCtx.globalCompositeOperation='lighter';
+
+    for(let j=0;j<=numPoints;j++){
+      const xNorm=j/numPoints;
+      const envelope=Math.sin(Math.PI*xNorm)**2;
+
+      const w1=Math.sin(xNorm*r.freq*Math.PI*2+t*r.speed+r.phase);
+      const w2=Math.sin(xNorm*r.freq*Math.PI*1.4-t*r.speed*0.6+r.phase*1.3)*0.35;
+      const wave=w1+w2;
+
+      const px=xNorm*canvasCssWidth;
+      const py=cy+(r.yOff+wave*amp)*envelope;
+
+      if(j===0){
+        vCtx.moveTo(px,py);
+      }else{
+        vCtx.lineTo(px,py);
+      }
+    }
+    vCtx.stroke();
+  });
+
+  vCtx.globalCompositeOperation='source-over';
+  vCtx.shadowBlur=0;
+  vCtx.restore();
+
+  visualizerRafId=requestAnimationFrame(renderRibbonFrame);
+}
+
+// Initial binding
+initCustomAudioPlayer();
+initWaveformVisualizer();
 const avg=(a,s,e)=>{let t=0;const end=Math.min(e,a.length);for(let i=s;i<end;i++)t+=a[i];return t/(Math.max(1,end-s))/255};
 
 function getFreqIndices(){
